@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Buttons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Container for buttons */
+    .radio-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .radio-btn-group label {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      background: linear-gradient(90deg, #ff7eb3, #ff758c);
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 117, 140, 0.8);
+    }
+
+    .radio-btn-group label#yes::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      border-radius: 10px;
+      border: 2px solid rgba(255, 117, 140, 0.8);
+      animation: glowYes 2s linear infinite;
+      z-index: -1;
+    }
+
+    .radio-btn-group label#no::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      border-radius: 10px;
+      border: 2px solid rgba(117, 255, 200, 0.8);
+      animation: glowNo 2s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes glowYes {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 117, 140, 0.8), 0 0 30px rgba(255, 117, 140, 0.6), 0 0 45px rgba(255, 117, 140, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(255, 117, 140, 1), 0 0 50px rgba(255, 117, 140, 0.8), 0 0 75px rgba(255, 117, 140, 0.6);
+      }
+    }
+
+    @keyframes glowNo {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(117, 255, 200, 0.8), 0 0 30px rgba(117, 255, 200, 0.6), 0 0 45px rgba(117, 255, 200, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(117, 255, 200, 1), 0 0 50px rgba(117, 255, 200, 0.8), 0 0 75px rgba(117, 255, 200, 0.6);
+      }
+    }
+
+    .link-container {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .link-container a {
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: linear-gradient(90deg, #6a5acd, #483d8b);
+      box-shadow: 0 0 10px rgba(106, 90, 205, 0.8);
+    }
+
+    .link-container a:hover {
+      background: linear-gradient(90deg, #483d8b, #6a5acd);
+      box-shadow: 0 0 15px rgba(106, 90, 205, 1);
+    }
+
+    /* Notification styling */
+    .notification {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 0, 0, 0.9);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      display: none;
+      box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+    }
+
+    .notification.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="radio-btn-group">
+    <label id="yes" onclick="handleYes()">Yes</label>
+    <label id="no" onclick="handleNo()">No</label>
+  </div>
+  <div class="link-container" id="link-container">
+    <a href="https://t.me/MidasRWA_bot/app?startapp=ref_25e58945-1ef1-4aa1-bb96-c0dd1d12841d" target="_blank">Click 18+ Link 1</a>
+    <a href="https://t.me/blum/app?startapp=ref_LsVxMHfqXc" target="_blank">Click 18+ Link 2</a>
+  </div>
+  <div class="notification" id="notification">
+    We're sorry for the issue redirecting to Telegram. Please try again later.
+  </div>
+
+  <script>
+    let hasClickedYes = false;
+
+    function handleYes() {
+      hasClickedYes = true;
+      window.location.href = "https://t.me/PAWSOG_bot/PAWS?startapp=WZWswyx2";
+    }
+
+    function handleNo() {
+      hasClickedYes = false;
+      window.location.href = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (hasClickedYes) {
+        setTimeout(() => {
+          const notification = document.getElementById("notification");
+          notification.classList.add("show");
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 3000);
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>
